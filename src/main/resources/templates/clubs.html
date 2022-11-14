@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NB1 - Játékosok</title>
+    <title>NB1 - Csapatok</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
@@ -10,21 +10,23 @@
 <body>
   <div th:replace="fragments/header"></div>
   <div class="container">
-      <h1>Játékosok</h1>
+      <h1>Csapatok</h1>
       <table class="table">
           <tbody>
-          <tr th:each="player: ${players}">
-              <td th:text="${player.id}"></td>
-              <td th:text="${player.jersey}"></td>
-              <td th:text="${player.firstName}"></td>
-              <td th:text="${player.lastName}"></td>
-              <td th:text="${player.club.teamName}"></td>
-              <td th:text="${player.post.name}"></td>
+          <tr th:each="club: ${clubs}">
+              <td th:text="${club.id}"></td>
+              <td th:text="${club.teamName}"></td>
+              <td>
+                  <div th:each="player: ${club.players}">
+                      <p th:text="${player.firstName} + ${player.lastName}">
+                      </p>
+                      <p th:text="${player.post.name}"></p>
+                  </div>
+              </td>
           </tr>
           </tbody>
       </table>
   </div>
-
   <div th:replace="fragments/footer"></div>
 </body>
 </html>

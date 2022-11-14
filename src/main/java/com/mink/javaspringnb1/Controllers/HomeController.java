@@ -10,13 +10,5 @@ public class HomeController {
     public String index() {
         return "index";
     }
-    @GetMapping("/teams")
-    public String teams() {
-        return "teams";
-    }
 
-    @GetMapping("/players")
-    public String players() {
-        return "players";
-    }
 }
