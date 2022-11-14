@@ -3,20 +3,35 @@
 <head>
     <html xmlns:th="https://www.thymeleaf.org">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>NB1</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
 </head>
 <body>
-    <h1>Hello, world!</h1>
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div th:replace="fragments/header"></div>
+    <div class="container py-5">
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">Magyar labdarúgó-bajnokság</h1>
+                <p class="col-md-8 fs-4">A magyar labdarúgó-bajnokság élvonalbeli versenyét 1901 óta rendezik meg. Hagyományos neve: NB I. (nemzeti bajnokság). Napjainkban a Magyar Labdarúgó-szövetség szervezi.</p>
+            </div>
+        </div>
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6">
+                <div class="h-100 p-5 text-bg-dark rounded-3">
+                    <h2>Története</h2>
+                    <p>A magyar bajnokság az egyik legrégibb nagy hagyományokkal rendelkező labdarúgó bajnokság Európában. Az elsőt 1901-ben szervezte az MLSZ (Magyar Labdarúgók Szövetsége, ma Magyar Labdarúgó-szövetség), mely 1901 januárjában alakult az addig csak esetleges szervezettséggel játszó csapatok összefogására. E csapatok között számos olyan klubot találunk, amelyek mind a mai napig aktív résztvevői a bajnokságnak, és olyanokat is melyek nevei ma már csak a legvérmesebb futballszurkolóknak mondanak valamit.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <h2>A rendszerváltás után</h2>
+                    <p>Az 1990-es év újabb mérföldkő, 1940-hez és 1956-hoz hasonlóan, hiszen lezárta a megkopott sikerű és erejű magyar labdarúgásban a többé-kevésbé sikeres '80-as éveket. Ekkor még kijutott a válogatott világversenyre /1986, világbajnokság/, játszott magyar csapat nemzetközi kupa döntőjében /a Videoton FC az UEFA-kupa sorozatában a Real Madrid CF ellen/, de a sikerek egyre kisebbek lettek és egyre nagyobb időközökkel születtek. 1990-ben ezeknek már csak az emléke élt. A világ futballja minden mutatóban megelőzte a magyart. Technikailag, fizikálisan, mentálisan, szervezettségben, a klubok gazdasági hátterében több évtizedesre nőtt a magyar futball lemaradása.</p>
+                </div>
+            </div>
         </div>
     </div>
+    <div th:replace="fragments/footer"></div>
 </body>
 </html>
