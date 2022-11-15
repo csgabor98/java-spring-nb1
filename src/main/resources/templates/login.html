@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body class="text-center">
+    <main class="form-signin w-100 m-auto">
+        <form name="f" th:action="@{/login}" method="post">
+            <img class="mb-4" src="https://cdn-icons-png.flaticon.com/512/5087/5087579.png" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 fw-normal">Kérjük jelentkezzen be</h1>
+
+            <div class="form-floating">
+                <input type="email" class="form-control" id="username" name="username" placeholder="name@example.hu">
+                <label for="username">Email cím</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="password" name="password" placeholder="jelszó">
+                <label for="password">Jelszó</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Bejelentkezés</button>
+        </form>
+    </main>
+</body>
+</html>
