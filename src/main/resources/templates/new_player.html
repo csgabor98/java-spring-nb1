@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NB1 - Új Játékos</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="container">
+  <h1 class="my-3">Új Játékos</h1>
+  <form action="" method="post">
+    <div class="mb-3 d-flex flex-row">
+      <div>
+        <label for="playerLastName" class="form-label">Játékos Vezetéknév</label>
+        <input type="text" class="form-control" id="playerLastName">
+      </div>
+      <div class="ms-2">
+        <label for="playerFirstName" class="form-label">Játékos Keresztnév</label>
+        <input type="text" class="form-control" id="playerFirstName">
+      </div>
+    </div>
+    <div class="mb-3 d-flex flex-row align-items-center">
+      <div>
+        <label for="playerJersey" class="form-label">Játékos mezszáma</label>
+        <input type="number" class="form-control" id="playerJersey">
+      </div>
+      <div class="ms-2">
+        <label for="playerValue" class="form-label">Játékos érték</label>
+        <input type="number" class="form-control" id="playerValue">
+      </div>
+      <div class="form-check ms-2 pt-3">
+        <label class="form-check-label" for="playerIsHungarian">
+          Magyar?
+        </label>
+        <input class="form-check-input" type="checkbox" value="" id="playerIsHungarian">
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="playerClub" class="form-label">Játékos csapata</label>
+      <select class="form-select" id="playerClub">
+        <option th:each="club : ${clubs}" th:value="${club.id}" th:text="${club.teamName}"></option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="playerPost" class="form-label">Játékos posztja</label>
+      <select class="form-select" id="playerPost">
+        <option th:each="post : ${posts}" th:value="${post.id}" th:text="${post.name}"></option>
+      </select>
+    </div>
+    <button class="btn btn-success mb-3" type="submit">Mentés</button>
+  </form>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

@@ -11,21 +11,28 @@
   <div th:replace="fragments/header"></div>
   <div class="container">
       <h1>Csapatok</h1>
-      <table class="table">
-          <tbody>
-          <tr th:each="club: ${clubs}">
-              <td th:text="${club.id}"></td>
-              <td th:text="${club.teamName}"></td>
-              <td>
-                  <div th:each="player: ${club.players}">
-                      <p th:text="${player.firstName} + ${player.lastName}">
-                      </p>
-                      <p th:text="${player.post.name}"></p>
+      <div class="row">
+          <div class="col-12 mb-3" th:each="club: ${clubs}">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title" th:text="${club.teamName}"></h5>
+                      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" th:attr="data-bs-target='#clubCollapse' + ${club.id},aria-controls='clubCollapse' + ${club.id}" aria-expanded="false">
+                          Játékosok
+                      </button>
+                      <div class="collapse" th:id="'clubCollapse' + ${club.id}">
+                          <table class="table">
+                              <tbody>
+                              <tr th:each="player: ${club.players}">
+                                  <td th:text="${player.firstName} + ${player.lastName}"></td>
+                                  <td th:text="${player.post.name}"></td>
+                              </tr>
+                              </tbody>
+                          </table>
+                      </div>
                   </div>
-              </td>
-          </tr>
-          </tbody>
-      </table>
+              </div>
+          </div>
+      </div>
   </div>
   <div th:replace="fragments/footer"></div>
 </body>
