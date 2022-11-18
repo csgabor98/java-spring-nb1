@@ -1,11 +1,14 @@
 package com.mink.javaspringnb1.Models;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "labdarugo")
 public class Player {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "mezszam")
@@ -24,9 +27,11 @@ public class Player {
     private String lastName;
 
     @Column(name = "szulido")
+    @Nullable
     private String birthDate;
 
     @Column(name = "magyar")
+    @Nullable
     private Boolean isHungarian;
 
     @Column(name = "ertek")
@@ -34,10 +39,12 @@ public class Player {
 
     @OneToOne
     @JoinColumn(name = "klubid", referencedColumnName = "id", insertable = false, updatable = false)
+    @Nullable
     private Club club;
 
     @OneToOne
     @JoinColumn(name = "posztid", referencedColumnName = "id", insertable = false, updatable = false)
+    @Nullable
     private Post post;
 
     public Post getPost() {
@@ -123,4 +130,5 @@ public class Player {
     public void setValue(int value) {
         this.value = value;
     }
+
 }

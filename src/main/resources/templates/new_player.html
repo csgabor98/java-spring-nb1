@@ -11,25 +11,25 @@
 <div th:replace="fragments/header"></div>
 <div class="container">
   <h1 class="my-3">Új Játékos</h1>
-  <form action="" method="post">
+  <form th:action="@{/new}" th:object="${player}" method="post">
     <div class="mb-3 d-flex flex-row">
       <div>
         <label for="playerLastName" class="form-label">Játékos Vezetéknév</label>
-        <input type="text" class="form-control" id="playerLastName">
+        <input type="text" class="form-control" id="playerLastName" th:field="*{lastName}">
       </div>
       <div class="ms-2">
         <label for="playerFirstName" class="form-label">Játékos Keresztnév</label>
-        <input type="text" class="form-control" id="playerFirstName">
+        <input type="text" class="form-control" id="playerFirstName" th:field="*{firstName}">
       </div>
     </div>
     <div class="mb-3 d-flex flex-row align-items-center">
       <div>
         <label for="playerJersey" class="form-label">Játékos mezszáma</label>
-        <input type="number" class="form-control" id="playerJersey">
+        <input type="number" class="form-control" id="playerJersey" th:field="*{jersey}">
       </div>
       <div class="ms-2">
         <label for="playerValue" class="form-label">Játékos érték</label>
-        <input type="number" class="form-control" id="playerValue">
+        <input type="number" class="form-control" id="playerValue" th:field="*{value}">
       </div>
       <div class="form-check ms-2 pt-3">
         <label class="form-check-label" for="playerIsHungarian">
@@ -40,13 +40,13 @@
     </div>
     <div class="mb-3">
       <label for="playerClub" class="form-label">Játékos csapata</label>
-      <select class="form-select" id="playerClub">
+      <select class="form-select" id="playerClub" th:field="*{clubID}">
         <option th:each="club : ${clubs}" th:value="${club.id}" th:text="${club.teamName}"></option>
       </select>
     </div>
     <div class="mb-3">
       <label for="playerPost" class="form-label">Játékos posztja</label>
-      <select class="form-select" id="playerPost">
+      <select class="form-select" id="playerPost" th:field="*{postID}">
         <option th:each="post : ${posts}" th:value="${post.id}" th:text="${post.name}"></option>
       </select>
     </div>
