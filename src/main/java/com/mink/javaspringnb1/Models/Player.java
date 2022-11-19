@@ -1,5 +1,6 @@
 package com.mink.javaspringnb1.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
@@ -50,11 +51,13 @@ public class Player {
     @OneToOne
     @JoinColumn(name = "klubid", referencedColumnName = "id", insertable = false, updatable = false)
     @Nullable
+    @JsonIgnore
     private Club club;
 
     @OneToOne
     @JoinColumn(name = "posztid", referencedColumnName = "id", insertable = false, updatable = false)
     @Nullable
+    @JsonIgnore
     private Post post;
 
     public Post getPost() {

@@ -1,5 +1,7 @@
 package com.mink.javaspringnb1.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
@@ -17,6 +19,7 @@ public class Post {
     private String name;
 
     @OneToMany(mappedBy = "postID")
+    @JsonIgnore
     private List<Player> players;
 
     public List<Player> getPlayers() {
