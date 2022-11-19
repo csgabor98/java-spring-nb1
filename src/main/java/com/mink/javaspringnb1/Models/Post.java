@@ -1,6 +1,7 @@
 package com.mink.javaspringnb1.Models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
@@ -8,9 +9,11 @@ import java.util.List;
 public class Post {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "nev")
+    @NotEmpty(message = "A poszt név nem lehet üres.")
     private String name;
 
     @OneToMany(mappedBy = "postID")

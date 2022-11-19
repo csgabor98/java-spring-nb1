@@ -23,7 +23,7 @@
                           <table class="table">
                               <tbody>
                               <tr th:each="player: ${club.players}">
-                                  <td th:text="${player.firstName} + ${player.lastName}"></td>
+                                  <td th:text="${player.firstName} + ' ' + ${player.lastName}"></td>
                                   <td th:text="${player.post.name}"></td>
                               </tr>
                               </tbody>

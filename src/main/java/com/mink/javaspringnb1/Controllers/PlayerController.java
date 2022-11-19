@@ -7,9 +7,12 @@ import com.mink.javaspringnb1.Repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class PlayerController {
@@ -35,10 +38,15 @@ public class PlayerController {
         return "new_player";
     }
 
-    @PostMapping("/new")
-    public String submitPlayer(@ModelAttribute Player player, Model model) {
+    @PostMapping("/player/new")
+    public String submitPlayer(@Valid @ModelAttribute Player player, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("posts", postRepository.findAll());
+            model.addAttribute("clubs", clubRepository.findAll());
+            return "new_player";
+        }
         playerRepository.save(player);
-        return "redirect:players";
+        return "redirect:/players";
     }
 
 }

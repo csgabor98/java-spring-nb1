@@ -12,14 +12,33 @@
   <div class="container">
       <h1>Játékosok</h1>
       <table class="table">
+          <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Mezszám</th>
+              <th scope="col">Keresztnév</th>
+              <th scope="col">Vezetéknév</th>
+              <th scope="col">Születésnap</th>
+              <th scope="col">Csapatnév</th>
+              <th scope="col">Poszt</th>
+              <th scope="col">Érték (€)</th>
+              <th scope="col">Nemzetiség</th>
+          </tr>
+          </thead>
           <tbody>
           <tr th:each="player: ${players}">
               <td th:text="${player.id}"></td>
               <td th:text="${player.jersey}"></td>
               <td th:text="${player.firstName}"></td>
               <td th:text="${player.lastName}"></td>
+              <td th:text="${player.birthDate}"></td>
               <td th:text="${player.club.teamName}"></td>
               <td th:text="${player.post.name}"></td>
+              <td th:text="${player.value}"></td>
+              <td>
+                  <img th:src="@{/img/hungary.png}" width="40px" class="img-thumbnail" th:if="${player.isHungarian}" alt="Magyar">
+                  <img th:src="@{/img/rest.jpg}" width="40px" class="img-thumbnail" th:unless="${player.isHungarian}" alt="Külföldi">
+              </td>
           </tr>
           </tbody>
       </table>

@@ -3,6 +3,9 @@ package com.mink.javaspringnb1.Models;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "labdarugo")
@@ -12,29 +15,36 @@ public class Player {
     private int id;
 
     @Column(name = "mezszam")
+    @NotNull
     private int  jersey;
 
     @Column(name = "klubid")
+    @NotNull
     private int clubID;
 
     @Column(name = "posztid")
+    @NotNull
     private int postID;
 
     @Column(name = "utonev")
+    @NotEmpty(message = "A keresztnév nem lehet üres")
     private String firstName;
 
     @Column(name = "vezeteknev")
+    @NotEmpty(message = "A vezetéknév nem lehet üres")
     private String lastName;
 
     @Column(name = "szulido")
-    @Nullable
+    @NotEmpty(message = "A születési év nem lehet üres")
     private String birthDate;
 
     @Column(name = "magyar")
-    @Nullable
+    @NotNull
     private Boolean isHungarian;
 
     @Column(name = "ertek")
+    @NotNull
+    @Min(value = 0L, message = "A játékos értékének nagyobbnak kell lennie mint 0")
     private int value;
 
     @OneToOne
@@ -115,11 +125,11 @@ public class Player {
         this.birthDate = birthDate;
     }
 
-    public Boolean getHungarian() {
+    public Boolean getIsHungarian() {
         return isHungarian;
     }
 
-    public void setHungarian(Boolean hungarian) {
+    public void setIsHungarian(Boolean hungarian) {
         isHungarian = hungarian;
     }
 

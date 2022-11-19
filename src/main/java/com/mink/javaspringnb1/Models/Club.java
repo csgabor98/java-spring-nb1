@@ -1,6 +1,7 @@
 package com.mink.javaspringnb1.Models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
@@ -8,9 +9,11 @@ import java.util.List;
 public class Club {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "csapatnev")
+    @NotEmpty(message = "A csapatnév nem lehet üres")
     private String teamName;
 
     @OneToMany(mappedBy = "clubID")
