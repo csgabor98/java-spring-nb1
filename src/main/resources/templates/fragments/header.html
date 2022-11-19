@@ -26,6 +26,7 @@
         </li>
       </ul>
       <form class="d-flex">
+        <a class="btn btn-outline-primary me-2" role="button" sec:authorize="isAnonymous()" th:href="@{/registration}">Regisztráció</a>
         <a class="btn btn-outline-success" role="button" sec:authorize="isAnonymous()" th:href="@{/login}">Bejelentkezés</a>
         <a class="btn btn-outline-danger" role="button" sec:authorize="isAuthenticated()" th:href="@{/logout}">Kijelentkezés</a>
       </form>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NB1 - Regisztráció</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="container">
+  <h1 class="my-3">Regisztráció</h1>
+  <div class="alert alert-danger" role="alert" th:if="${msg != null}" th:text="${msg}"></div>
+  <form th:action="@{/registration/new}" th:object="${user}" method="post">
+    <div class="mb-3 d-flex flex-row">
+      <div>
+        <label for="userName" class="form-label">Felhasználónév</label>
+        <input type="text" class="form-control" id="userName" th:field="*{name}">
+      </div>
+    </div>
+    <div class="mb-3 d-flex flex-row">
+      <div>
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" th:field="*{email}">
+      </div>
+    </div>
+    <div class="mb-3 d-flex flex-row">
+      <div>
+        <label for="password" class="form-label">Jelszó</label>
+        <input type="password" class="form-control" id="password" th:field="*{password}">
+      </div>
+    </div>
+    <hr/>
+    <button class="btn btn-success mb-3" type="submit">Regisztráció</button>
+  </form>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>
