@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -27,6 +29,7 @@ public class PlayerController {
     @GetMapping("/players")
     public String players(Model model) {
         model.addAttribute("players", playerRepository.findAll());
+        model.addAttribute("msg", model.getAttribute("msg"));
         return "players";
     }
 
@@ -46,6 +49,13 @@ public class PlayerController {
             return "new_player";
         }
         playerRepository.save(player);
+        return "redirect:/players";
+    }
+
+    @GetMapping("/players/delete/{id}")
+    public String deletePlayer(@PathVariable(name = "id") int id, RedirectAttributes redirAttr) {
+        redirAttr.addFlashAttribute("msg", "Játékos törölve! ID=" + playerRepository.findById(id).get().getId());
+        playerRepository.delete(playerRepository.findById(id).get());
         return "redirect:/players";
     }
 
